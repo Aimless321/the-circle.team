@@ -10,7 +10,7 @@
             autoplay
             loop
             class="h-full w-full object-cover"
-            src="@/assets/hll-trailer.mp4"
+            src="https://fastdl.aimless.eu/assets/hll-trailer.mp4"
           />
           <div
             class="absolute inset-0 bg-gradient-to-r from-purple-800 to-indigo-700 mix-blend-multiply"
