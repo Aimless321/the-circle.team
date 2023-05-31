@@ -5,44 +5,54 @@
         class="mx-auto flex max-w-7xl items-center justify-between px-4 py-6 sm:px-6 md:justify-start md:space-x-10 lg:px-8"
       >
         <div class="flex justify-start lg:w-0 lg:flex-1">
-          <a href="#">
+          <router-link to="/">
             <span class="sr-only">The Circle</span>
             <img
               class="h-8 w-auto sm:h-10"
               src="@/assets/circle-640-transparent.png"
-              alt=""
+              alt="The Circle logo"
             />
-          </a>
+          </router-link>
         </div>
-        <!--        <div class="-my-2 -mr-2 md:hidden">-->
-        <!--          <PopoverButton-->
-        <!--            class="inline-flex items-center justify-center rounded-md p-2 text-gray-300 hover:bg-zinc-800 hover:text-gray-200 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500"-->
-        <!--          >-->
-        <!--            <span class="sr-only">Open menu</span>-->
-        <!--            <Bars3Icon class="h-6 w-6" aria-hidden="true" />-->
-        <!--          </PopoverButton>-->
-        <!--        </div>-->
-        <!--        <PopoverGroup as="nav" class="hidden space-x-10 md:flex">-->
-        <!--          <a-->
-        <!--            href="#"-->
-        <!--            class="text-base font-medium text-gray-200 hover:text-gray-900"-->
-        <!--          >-->
-        <!--            Servers-->
-        <!--          </a>-->
-        <!--          <a-->
-        <!--            href="#"-->
-        <!--            class="text-base font-medium text-gray-200 hover:text-gray-900"-->
-        <!--          >-->
-        <!--            Personal Stats-->
-        <!--          </a>-->
-        <!--        </PopoverGroup>-->
-        <!--        <div class="hidden items-center justify-end md:flex md:flex-1 lg:w-0">-->
-        <!--          <a-->
-        <!--            href="#"-->
-        <!--            class="ml-8 inline-flex items-center justify-center whitespace-nowrap rounded-md border border-transparent bg-gradient-to-r from-purple-600 to-indigo-600 bg-origin-border px-4 py-2 text-base font-medium text-white shadow-sm hover:from-purple-700 hover:to-indigo-700"-->
-        <!--            >Sign in</a-->
-        <!--          >-->
-        <!--        </div>-->
+        <div class="-my-2 -mr-2 md:hidden">
+          <PopoverButton
+            class="inline-flex items-center justify-center rounded-md p-2 text-gray-300 hover:bg-zinc-800 hover:text-gray-200 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500"
+          >
+            <span class="sr-only">Open menu</span>
+            <Bars3Icon class="h-6 w-6" aria-hidden="true" />
+          </PopoverButton>
+        </div>
+        <PopoverGroup as="nav" class="hidden space-x-10 md:flex">
+          <router-link
+            to="/"
+            class="text-base font-medium text-gray-200 hover:text-gray-300"
+          >
+            Home
+          </router-link>
+          <router-link
+            to="/servers"
+            class="text-base font-medium text-gray-200 hover:text-gray-300"
+          >
+            Servers
+          </router-link>
+          <router-link
+            to="/stats"
+            class="text-base font-medium text-gray-200 hover:text-gray-300"
+          >
+            Stats
+          </router-link>
+        </PopoverGroup>
+        <div class="hidden items-center justify-end md:flex md:flex-1 lg:w-0">
+          <a
+            v-if="!store.loggedIn"
+            :href="`${apiUrl}/auth/discord`"
+            class="ml-8 inline-flex items-center justify-center whitespace-nowrap rounded-md border border-transparent bg-gradient-to-r from-purple-600 to-indigo-600 bg-origin-border px-4 py-2 text-base font-medium text-white shadow-sm hover:from-purple-700 hover:to-indigo-700"
+            >Sign in</a
+          >
+          <p v-else class="text-gray-400">
+            Logged in as: <span class="text-gray-200">{{ getUsername() }}</span>
+          </p>
+        </div>
       </div>
 
       <transition
@@ -81,25 +91,36 @@
             </div>
             <div class="py-6 px-5">
               <div class="grid grid-cols-2 gap-4">
-                <a
-                  href="#"
-                  class="text-base font-medium text-gray-200 hover:text-gray-700"
+                <router-link
+                  to="/"
+                  class="text-base font-medium text-gray-200 hover:text-gray-300"
+                >
+                  Home
+                </router-link>
+                <router-link
+                  to="/servers"
+                  class="text-base font-medium text-gray-200 hover:text-gray-300"
                 >
                   Servers
-                </a>
-                <a
-                  href="#"
-                  class="text-base font-medium text-gray-200 hover:text-gray-700"
+                </router-link>
+                <router-link
+                  to="/stats"
+                  class="text-base font-medium text-gray-200 hover:text-gray-300"
                 >
-                  Personal Stats
-                </a>
+                  Stats
+                </router-link>
               </div>
               <div class="mt-6">
                 <a
-                  href="#"
+                  v-if="!store.loggedIn"
+                  :href="`${apiUrl}/auth/discord`"
                   class="flex w-full items-center justify-center rounded-md border border-transparent bg-gradient-to-r from-purple-600 to-indigo-600 bg-origin-border px-4 py-2 text-base font-medium text-white shadow-sm hover:from-purple-700 hover:to-indigo-700"
                   >Sign in</a
                 >
+                <p v-else class="text-gray-400">
+                  Logged in as:
+                  <span class="text-gray-200">{{ getUsername() }}</span>
+                </p>
               </div>
             </div>
           </div>
@@ -116,5 +137,13 @@ import {
   PopoverGroup,
   PopoverPanel,
 } from "@headlessui/vue";
+import { useStore } from "../store";
 import { Bars3Icon, XMarkIcon } from "@heroicons/vue/24/outline";
+
+const apiUrl = import.meta.env.VITE_API_BASE_URL;
+const store = useStore();
+
+function getUsername() {
+  return localStorage.getItem("username");
+}
 </script>

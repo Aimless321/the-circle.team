@@ -4,7 +4,7 @@ import SiteHeader from "./components/SiteHeader.vue";
 </script>
 
 <template>
-  <div class="bg-zinc-900">
+  <div class="bg-gray-900">
     <SiteHeader />
 
     <main>
