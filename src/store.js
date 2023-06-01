@@ -6,5 +6,9 @@ export const useStore = defineStore("main", {
     login() {
       this.loggedIn = true;
     },
+    logout() {
+      localStorage.removeItem("username");
+      this.loggedIn = false;
+    },
   },
 });
