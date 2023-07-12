@@ -107,7 +107,7 @@
     class="grid place-content-center relative isolate"
   >
     <div
-      class="absolute inset-x-0 top-4 -z-10 flex transform-gpu justify-center overflow-hidden blur-3xl"
+      class="absolute inset-x-0 -top-20 -z-10 flex transform-gpu justify-center overflow-hidden blur-3xl"
       aria-hidden="true"
     >
       <div
