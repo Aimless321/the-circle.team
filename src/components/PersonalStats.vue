@@ -8,6 +8,9 @@
 
   <div v-else class="relative isolate">
     <AvgStats :avg-stats="stats.publicAvg" />
+    <p class="leading-8 text-gray-300">
+      Averages over last 30 games
+    </p>
     <LastGames class="mt-12" :games="stats.publicGames" />
 
     <div
@@ -66,7 +69,7 @@ fetch(statsUrl, { credentials: "include" })
       return;
     }
 
-    throw new Error("Something went wrong");
+    throw new Error("Something went wrong, server returned: " + resp.status);
   })
   .then((data) => {
     Object.assign(stats, data);

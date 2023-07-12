@@ -9,6 +9,9 @@ export const useStore = defineStore("main", {
     logout() {
       localStorage.removeItem("username");
       this.loggedIn = false;
+
+      const apiUrl = import.meta.env.VITE_API_BASE_URL;
+      fetch(`${apiUrl}/logout`, { credentials: "include" });
     },
   },
 });
