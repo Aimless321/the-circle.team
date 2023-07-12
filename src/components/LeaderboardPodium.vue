@@ -126,21 +126,30 @@
       />
 
       <div class="flex flex-col items-center gap-2">
-        <h1 class="text-3xl text-white text-center">
+        <h1 class="text-3xl text-white">
           {{ selectedPersonal.steamInfo.PersonaName }}
         </h1>
-        <div class="flex justify-evenly w-full items-center">
+        <div class="flex justify-evenly w-full items-center gap-6">
           <div>
-            <p class="text-2xl font-semibold text-center text-white leading-none">
+            <p
+              class="text-2xl font-semibold text-center text-white leading-none"
+            >
               {{ selectedPersonal.totalKills }}
             </p>
-            <span class="text-sm text-center w-full block text-gray-300 leading-none">Kills</span>
+            <span
+              class="text-sm text-center w-full block text-gray-300 leading-none"
+              >Kills</span
+            >
           </div>
           <div>
-            <p class="text-2xl font-semibold text-center text-white leading-none">
+            <p
+              class="text-2xl font-semibold text-center text-white leading-none"
+            >
               {{ selectedPersonal.gameCount }}
             </p>
-            <span class="text-sm text-center w-full block text-gray-300 leading-none">
+            <span
+              class="text-sm text-center w-full block text-gray-300 leading-none"
+            >
               Games
             </span>
           </div>
