@@ -24,7 +24,7 @@
           <p class="text-3xl font-bold text-white">
             {{ selectedLeaderboard[1].totalKills }}
           </p>
-          <span class="text-center w-full block text-gray-300">kills</span>
+          <span class="text-center w-full block text-gray-300">Kills</span>
           <p class="text-2xl font-semibold text-center mt-4 text-white">
             {{ selectedLeaderboard[1].gameCount }}
           </p>
@@ -56,7 +56,7 @@
           <p class="text-3xl font-bold text-white">
             {{ selectedLeaderboard[0].totalKills }}
           </p>
-          <span class="text-center w-full block text-gray-300">kills</span>
+          <span class="text-center w-full block text-gray-300">Kills</span>
           <p class="text-2xl font-semibold text-center mt-4 text-white">
             {{ selectedLeaderboard[0].gameCount }}
           </p>
@@ -88,7 +88,7 @@
           <p class="text-3xl font-bold text-white">
             {{ selectedLeaderboard[2].totalKills }}
           </p>
-          <span class="text-center w-full block text-gray-300">kills</span>
+          <span class="text-center w-full block text-gray-300">Kills</span>
           <p class="text-2xl font-semibold text-center mt-4 text-white">
             {{ selectedLeaderboard[2].gameCount }}
           </p>
@@ -116,33 +116,54 @@
       />
     </div>
 
-    <div class="shadow w-full p-8 rounded-lg md:mt-8 md:mx-0 bg-white/20">
-      <div class="flex flex-col items-center">
-        <img
-          class="inline-block h-14 w-14 rounded-md"
-          :src="selectedPersonal.steamInfo.avatarmedium"
-          alt=""
-        />
-        <h1 class="text-3xl text-white text-center mt-4">
+    <div
+      class="shadow w-full px-4 py-2 rounded-lg md:mt-8 md:mx-0 bg-white/20 flex items-center gap-4"
+    >
+      <img
+        class="h-14 w-14 rounded-md"
+        :src="selectedPersonal.steamInfo.avatarmedium"
+        alt=""
+      />
+
+      <div class="flex flex-col items-center gap-2">
+        <h1 class="text-3xl text-white text-center">
           {{ selectedPersonal.steamInfo.PersonaName }}
         </h1>
+        <div class="flex justify-evenly w-full items-center">
+          <div>
+            <p class="text-2xl font-semibold text-center text-white leading-none">
+              {{ selectedPersonal.totalKills }}
+            </p>
+            <span class="text-sm text-center w-full block text-gray-300 leading-none">Kills</span>
+          </div>
+          <div>
+            <p class="text-2xl font-semibold text-center text-white leading-none">
+              {{ selectedPersonal.gameCount }}
+            </p>
+            <span class="text-sm text-center w-full block text-gray-300 leading-none">
+              Games
+            </span>
+          </div>
+        </div>
       </div>
-      <p class="text-2xl font-semibold text-center mt-4 text-white">
-        {{ selectedPersonal.totalKills }}
-      </p>
-      <span class="text-center w-full block text-gray-300">kills</span>
-      <p class="text-2xl font-semibold text-center mt-4 text-white">
-        {{ selectedPersonal.gameCount }}
-      </p>
-      <span class="text-sm text-center w-full block text-gray-300">Games</span>
 
-      <p class="mt-12 text-3xl font-bold text-center text-white">
-        #{{ selectedPersonal.rank }}
-      </p>
+      <div class="flex flex-col items-end">
+        <span class="text-sm text-center w-full block text-gray-300">Rank</span>
+        <p class="text-3xl font-bold text-center text-white">
+          #{{ selectedPersonal.rank }}
+        </p>
+      </div>
     </div>
   </div>
   <p v-else class="leading-8 text-gray-300">
-    Sign In or link your SteamID to your account on our <a class="text-blue-500" href="https://discord.gg/the-circle" target="_blank">Discord</a> to see your own stats.
+    Sign In or link your SteamID to your account on our
+    <a
+      class="text-blue-500"
+      href="https://discord.gg/the-circle"
+      target="_blank"
+      >Discord</a
+    >
+    to see your own stats.
   </p>
 </template>
 
